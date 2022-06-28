@@ -1,4 +1,6 @@
 package gui;
+import java.awt.BorderLayout;
+
 import javax.swing.JFrame;
 
 /**
@@ -12,12 +14,13 @@ public class Window extends JFrame {
 	
 	public Window() {
 		
-		setTitle("Soduku Solver");
-		setSize(600, 600);
+		setTitle("nanobyter    Soduku Solver");
+		setSize(600, 800);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 		
-		this.add(new GamePanel());
+		this.add(new GamePanel(), BorderLayout.WEST);
+		this.add(new NumberPanel(), BorderLayout.EAST);
 		
 		setVisible(true);
 		pack();
