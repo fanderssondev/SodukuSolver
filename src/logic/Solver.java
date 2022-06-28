@@ -1,5 +1,6 @@
 package logic;
 
+import gui.GamePanel;
 import gui.Window;
 
 /**
@@ -10,7 +11,8 @@ import gui.Window;
 public class Solver {
 
 	public static final int GRID_SIZE = 9;
-
+	private static int markedSquare;
+	
 	/* @formatter:off */
 	private static int[][] board = {{7, 0, 2, 0, 5, 0, 6, 0, 0},
 							 		{0, 0, 0, 0, 0, 3, 0, 0, 0},
@@ -24,7 +26,7 @@ public class Solver {
 	/* @formatter:on */
 
 	
-	private static boolean solveBoard(int[][] board) {
+	public static boolean solveBoard(int[][] board) {
 
 		for (int row = 0; row < GRID_SIZE; row++) {
 			for (int col = 0; col < GRID_SIZE; col++) {
@@ -91,17 +93,43 @@ public class Solver {
 				&& !isNumberInBox(board, number, row, col);
 	}
 	
-	private static void printBoard(int[][] board) {
-		for (int row = 0; row < GRID_SIZE; row++) {
-			for (int col = 0; col < GRID_SIZE; col++) {
-				System.out.print(board[row][col]);
-			}
-			System.out.println();
-		}
+//	private static void printBoard(int[][] board) {
+//		for (int row = 0; row < GRID_SIZE; row++) {
+//			for (int col = 0; col < GRID_SIZE; col++) {
+//				System.out.print(board[row][col]);
+//			}
+//			System.out.println();
+//		}
+//	}
+	
+	
+	public static int getBoardValue(int index1D) {
+		int row = index1D / Solver.GRID_SIZE;
+		int col = index1D % Solver.GRID_SIZE;
+		
+		return board[row][col];
 	}
 	
-	public static int[][] getBoard() {
+	public static void setBoardValue(int index1D, int value) {
+		int row = index1D / Solver.GRID_SIZE;
+		int col = index1D % Solver.GRID_SIZE;
+		
+		board[row][col] = value;
+		
+		GamePanel.updateBoard();
+		markedSquare = -1;
+	}
+	
+	public static int[][] getBoard(){
 		return board;
+	}
+
+	public static int getMarkedSquare() {
+		return markedSquare;
+	}
+
+	public static void setMarkedSquare(int index) {
+		markedSquare = index;
 	}
 
 	public static void main(String[] args) {

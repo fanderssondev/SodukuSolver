@@ -25,7 +25,6 @@ public class NumberPanel extends JPanel {
 	public NumberPanel() {
 
 		buttons = new JButton[Solver.GRID_SIZE + 2];
-		
 
 		this.setBackground(Color.LIGHT_GRAY);
 
@@ -33,16 +32,23 @@ public class NumberPanel extends JPanel {
 		this.setLayout(layout);
 
 		initButtons();
+
 	}
 
 	private void initButtons() {
 		for (int i = 0; i < Solver.GRID_SIZE; i++) {
 			buttons[i] = new JButton(String.valueOf(i + 1));
+			buttons[i].addActionListener(new ButtonListener());
+			buttons[i].setBackground(Color.LIGHT_GRAY);
 			this.add(buttons[i]);
 		}
 		buttons[9] = new JButton("Solve puzzle");
+		buttons[9].addActionListener(new ButtonListener());
+		buttons[9].setBackground(Color.LIGHT_GRAY);
 		this.add(buttons[9]);
 		buttons[10] = new JButton("Clear puzzle");
+		buttons[10].addActionListener(new ButtonListener());
+		buttons[10].setBackground(Color.LIGHT_GRAY);
 		this.add(buttons[10]);
 	}
 
@@ -55,10 +61,34 @@ public class NumberPanel extends JPanel {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
+
+			if (e.getActionCommand().equals("Clear puzzle")) {
+				for (int j = 0; j < Solver.GRID_SIZE * Solver.GRID_SIZE; j++) {
+					Solver.setBoardValue(j, 0);
+				}
+			}
+			else if (e.getActionCommand().equals("Solve puzzle")) {
+				if (Solver.solveBoard(Solver.getBoard())) {
+					GamePanel.updateBoard();
+				}
+				else {
+					System.out.println("Not able to solve board");
+				}
+			}
+			else {
+				for (int i = 0; i < buttons.length; i++) {
+					if (e.getActionCommand().equals(String.valueOf(i)) && Solver.getMarkedSquare() != -1) {
+						Solver.setBoardValue(Solver.getMarkedSquare(), i);
+					}
+					
+					
+					
+//					String value = Solver.getBoardValue(i) == 0 ? "" : String.valueOf(Solver.getBoardValue(i));
+//					buttons[i].setText(value);
+//					buttons[i].setBackground(Color.LIGHT_GRAY);
+				}
+			}
 
 		}
-
 	}
-
 }
