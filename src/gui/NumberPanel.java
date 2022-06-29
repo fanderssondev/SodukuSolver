@@ -40,15 +40,18 @@ public class NumberPanel extends JPanel {
 			buttons[i] = new JButton(String.valueOf(i + 1));
 			buttons[i].addActionListener(new ButtonListener());
 			buttons[i].setBackground(Color.LIGHT_GRAY);
+			buttons[i].setFocusable(false);
 			this.add(buttons[i]);
 		}
 		buttons[9] = new JButton("Solve puzzle");
 		buttons[9].addActionListener(new ButtonListener());
 		buttons[9].setBackground(Color.LIGHT_GRAY);
+		buttons[9].setFocusable(false);
 		this.add(buttons[9]);
 		buttons[10] = new JButton("Clear puzzle");
 		buttons[10].addActionListener(new ButtonListener());
 		buttons[10].setBackground(Color.LIGHT_GRAY);
+		buttons[10].setFocusable(false);
 		this.add(buttons[10]);
 	}
 

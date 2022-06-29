@@ -39,7 +39,7 @@ public class GamePanel extends JPanel {
 			buttons[i] = new JButton(value);
 			buttons[i].addActionListener(new ButtonListener());
 			buttons[i].setBackground(Color.LIGHT_GRAY);
-			
+			buttons[i].setFocusable(false);
 			this.add(buttons[i]);
 		}
 	}
