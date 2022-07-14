@@ -41,6 +41,7 @@ public class NumberPanel extends JPanel {
 			buttons[i].addActionListener(new ButtonListener());
 			buttons[i].setBackground(Color.LIGHT_GRAY);
 			buttons[i].setFocusable(false);
+			buttons[i].setPreferredSize(new Dimension(10, 10));
 			this.add(buttons[i]);
 		}
 		buttons[9] = new JButton("Solve puzzle");

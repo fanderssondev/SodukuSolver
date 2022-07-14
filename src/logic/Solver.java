@@ -131,22 +131,17 @@ public class Solver {
 	public static void setMarkedSquare(int index) {
 		markedSquare = index;
 	}
-
-	public static void main(String[] args) {
-		
+	
+	
+	/**
+	 * To be able to run as an applet
+	 */
+	public void init() {
 		new Window();
-		
-		
-//		printBoard(board);
-//		
-//		if (solveBoard(board)) {
-//			System.out.println("Successfully solved the board");
-//		}
-//		else {
-//			System.out.println("Board not solvable");
-//		}
-//		
-//		printBoard(board);
-		
 	}
+
+//	public static void main(String[] args) {
+//		
+//		new Window();
+//	}
 }
